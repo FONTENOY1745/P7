@@ -20,5 +20,5 @@ module.exports = (sequelize, DataTypes) => {
       modelName: "Forums",
     }
   );
-  return Forums;
+  return Topic;
 };

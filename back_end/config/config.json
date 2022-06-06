@@ -2,8 +2,8 @@
     "development": {
       "username": "root",
       "password": null,
-      "database": "groupomania",
-      "host": "localhost:3000",
+      "database": "p7_thierry",
+      "host": "localhost",
       "dialect": "mysql"
     },
     "test": {

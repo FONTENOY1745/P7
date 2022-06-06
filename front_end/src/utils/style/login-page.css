@@ -1,0 +1,8 @@
+
+.navbar-login {
+    display: flex;
+    flex-direction: row;
+}
+.form {
+    margin-top: 50px;
+}
