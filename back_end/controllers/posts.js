@@ -1,11 +1,11 @@
 const db = require("../models");
-const { Post, Comment } = db.sequelize.models;
+const { Posts, Comment } = db.sequelize.models;
 const fs = require("fs");
 const jwt = require("jsonwebtoken");
 
 // Comment récupérer tous les posts :
 exports.getAllPosts = (req, res) => {
-  Post.findAll()
+  Posts.findAll()
     .then((posts) => res.status(200).json(posts))
     .catch((error) => res.status(400).json({ error }));
 };
@@ -21,6 +21,7 @@ exports.getLastActivityPost = (req, res) => {
 
 // Comment saisir un post :
 exports.createPost = (req, res, next) => {
+  console.log(db.sequelize.models);
   console.log(req.body);
   const postObject = req.body;
   const userId = req.body.userId;
@@ -31,7 +32,7 @@ exports.createPost = (req, res, next) => {
       req.file.filename
     }`;
   }
-  const post = new Post({
+  const post = new Posts({
     ...postObject,
     userId: userId,
     userName: userName,
@@ -49,16 +50,16 @@ exports.modifyPost = (req, res) => {
   Post.findOne({
     where: { id: req.params.id },
   })
-    .then((Post) => {
-      Post.update(postObject);
+    .then((post) => {
+      post.update(postObject);
     })
-    .then(() => res.status(200).json({ Post }))
+    .then(() => res.status(200).json({ message: "Post mis à jour" }))
     .catch((error) => res.status(400).json({ error }));
 };
 
 // Comment annuler un post :
 exports.deletePost = (req, res) => {
-  Post.findOne({
+  Posts.findOne({
     where: { id: req.params.id },
   })
     .then((post) => {

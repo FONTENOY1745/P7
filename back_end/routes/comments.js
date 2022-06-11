@@ -15,6 +15,4 @@ router.delete("/ofpost/:id", auth, commentCtrl.deleteCommentsForOnePost);
 
 router.post("/:postId", auth, commentCtrl.createComment);
 
-router.delete("/:id", auth, commentCtrl.deleteComment);
-
 module.exports = router;
