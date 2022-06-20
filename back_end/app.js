@@ -38,7 +38,7 @@ const commentsRoutes = require("./routes/comments");
 const forumsRoutes = require("./routes/forums");
 
 app.use("/api/user", userRoutes);
-app.use("/api/posts", postRoutes);
+app.use("/api/posts", postsRoutes);
 app.use("/api/comments", commentsRoutes);
 app.use("/api/forums", forumsRoutes);
 app.use("/images", express.static(path.join(__dirname, "images")));
