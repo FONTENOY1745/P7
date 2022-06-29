@@ -1,27 +1,30 @@
-import React, { useEffect, useCallback, useState, useContext } from "react";
-import Axios from "axios";
-import "../style/forum.css";
-import Modal from "../components/Modal";
-import CommentSection from "../components/CommentSection";
-import DataContext from "../DataContext";
-import { useHistory } from "react-router-dom";
-import FormData from "form-data";
-import ModifyModal from "../components/ModifyModal";
-import { FaPlus } from "react-icons/fa";
+import React, { useEffect, useCallback, useState, useContext } from 'react';
+import Axios from 'axios';
+import '../style/forum.css';
+import Modal from '../components/Modal';
+import CommentSection from '../components/CommentSection';
+import DataContext from '../DataContext';
+import { useHistory } from 'react-router-dom';
+import FormData from 'form-data';
+import ModifyModal from '../components/ModifyModal';
+import { FaPlus } from 'react-icons/fa';
+import { createPortal } from 'react-dom';
 
 export default function Forum() {
   const history = useHistory();
 
   const { dataUser, LStoken } = useContext(DataContext);
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
   const [posts, setPosts] = useState([]);
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [isOpenModifyModal, setIsOpenModifyModal] = useState(false);
-  const [modifyPostId, setModifyPostId] = useState("");
-  const [file, setFile] = useState("");
+  const [modifyPostId, setModifyPostId] = useState('');
+  const [file, setFile] = useState('');
 
-  const userId = dataUser.id;
+  console.log(useContext(DataContext));
+
+  const userId = dataUser.length && dataUser[0].id;
 
   function getPostId(postId) {
     setModifyPostId(postId);
@@ -34,7 +37,7 @@ export default function Forum() {
 
   // On redirige l'utilisateur s'il ne s'est pas logué //
   function redirectLogin() {
-    history.push("/login");
+    history.push('/login');
   }
 
   useEffect(() => {
@@ -44,7 +47,7 @@ export default function Forum() {
   }, [LStoken]);
 
   const fetchPosts = useCallback(() => {
-    Axios.get("http://localhost:3000/api/post", {
+    Axios.get('http://localhost:3000/api/posts', {
       headers: {
         Authorization: LStoken,
       },
@@ -54,21 +57,23 @@ export default function Forum() {
   }, [LStoken, posts]);
 
   const submitPost = useCallback(() => {
-    const userName = dataUser.name;
-    const userId = dataUser.id;
+    const userName = dataUser[0].name;
+    const userId = dataUser[0].id;
     // on ajoute un formData en ajoutant tous les champs texte
     const myformData = new FormData();
-    myformData.append("title", title);
-    myformData.append("content", content);
-    myformData.append("userId", userId);
-    myformData.append("userName", userName);
+    myformData.append('title', title);
+    myformData.append('content', content);
+    myformData.append('userId', userId);
+    myformData.append('userName', userName);
+
+    console.log(userId);
 
     // On ajoute un champ pour modérer
-    myformData.append("file", file);
+    myformData.append('file', file);
 
-    Axios.post("http://localhost:3000/api/post", myformData, {
+    Axios.post('http://localhost:3000/api/posts', myformData, {
       headers: {
-        "Content-Type": "multipart/form-data",
+        'Content-Type': 'multipart/form-data',
         Authorization: LStoken,
       },
     }).then((res) => console.log(res));
@@ -83,14 +88,14 @@ export default function Forum() {
   }, []);
 
   const modifyPost = useCallback(() => {
-    const userName = dataUser.name;
-    const userId = dataUser.id;
+    const userName = dataUser[0].name;
+    const userId = dataUser[0].id;
     const myformData = new FormData();
-    myformData.append("title", title);
-    myformData.append("content", content);
-    myformData.append("userId", userId);
-    myformData.append("userName", userName);
-    myformData.append("file", file);
+    myformData.append('title', title);
+    myformData.append('content', content);
+    myformData.append('userId', userId);
+    myformData.append('userName', userName);
+    myformData.append('file', file);
 
     Axios.put(`http://localhost:3000/api/post/${modifyPostId}`, myformData, {
       headers: {
@@ -211,7 +216,8 @@ export default function Forum() {
             <div className="card-body">
               <img className="post-img" src={`${post.imageUrl}`} alt="" />
               <div className="container-buttons">
-                {post.userId == userId || dataUser.moderator == true ? (
+                {post.userId === userId ||
+                (dataUser.length && dataUser[0].moderator === true) ? (
                   <div>
                     <button
                       className="delete-btn"

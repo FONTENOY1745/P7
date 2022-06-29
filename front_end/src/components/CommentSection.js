@@ -3,7 +3,7 @@ import AddCommentModal from "./AddCommentModal";
 import DataContext from "../DataContext";
 import Axios from "axios";
 import { FaTrashAlt } from "react-icons/fa";
-import "../style/Comment.css";
+import "../style/comment.css";
 
 export default function CommentSection({ postId }) {
   const { dataUser, LStoken } = useContext(DataContext);
@@ -105,7 +105,7 @@ export default function CommentSection({ postId }) {
                 <p className="comment-text">{comment.content}</p>
               </div>
 
-              {comment.userId == userId || dataUser.moderator == true ? (
+              {comment.userId === userId || dataUser.moderator === true ? (
                 <FaTrashAlt
                   className="delete-comment-btn"
                   onClick={() => deleteComment(comment.id)}

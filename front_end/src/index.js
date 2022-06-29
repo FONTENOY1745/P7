@@ -1,16 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Home from "./pages/Home";
-import Forum from "./pages/Forum";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import Profile from "./pages/Profile";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Home from "./pages/home";
+import Forum from "./pages/forum";
+import Login from "./pages/login";
+import Signup from "./pages/signup";
+import Profile from "./pages/profile";
+import Header from "./components/header";
+import Footer from "./components/footer";
 import "./style/index.css";
 
-import { DataProvider } from "./DataContext";
+import { DataProvider } from "./datacontext";
 
 ReactDOM.render(
   <Router>
