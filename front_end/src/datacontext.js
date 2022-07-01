@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
 import Axios from "axios";
 
-export const datacontext = createContext({});
+export const DataContext = createContext({});
 
 export const DataProvider = ({ children }) => {
   const [dataUser, setDataUser] = useState([]);
@@ -18,7 +18,7 @@ export const DataProvider = ({ children }) => {
   }, []);
 
   return (
-    <datacontext.Provider
+    <DataContext.Provider
       value={{
         dataUser,
         LStoken,
@@ -26,8 +26,8 @@ export const DataProvider = ({ children }) => {
       }}
     >
       {children}
-    </datacontext.Provider>
+    </DataContext.Provider>
   );
 };
 
-export default datacontext;
+export default DataContext;

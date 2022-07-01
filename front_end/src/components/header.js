@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "../style/header.css";
 import { useHistory } from "react-router-dom";
-import React, { useState } from "react-router-dom";
+import React, { useState } from "react";
 import { FaBars } from "react-icons/fa";
 
 function Header() {
