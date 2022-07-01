@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import Axios from 'axios';
-import '../style/form.css';
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import Axios from "axios";
+import "../style/form.css";
 
 export default function Signup() {
   const history = useHistory();
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   function redirect() {
-    history.push('/login');
+    history.push("/login");
   }
 
   const emailReg =
@@ -18,7 +18,7 @@ export default function Signup() {
   const passwordReg = /^[A-Za-z0-9]\w{8,}$/;
 
   const signup = () => {
-    Axios.post('http://localhost:3000/api/user/signup', {
+    Axios.post("http://localhost:3000/api/user/signup", {
       name: name,
       email: email,
       password: password,

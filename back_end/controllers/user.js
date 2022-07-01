@@ -1,14 +1,14 @@
-const db = require('../models/index');
+const db = require("../models/index");
 
 // Comment importer le module de chiffrage bcrypt :
 
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 // Comment rechercher un utilisateur :
 exports.getOneUser = (req, res) => {
   db.sequelize.models.User.findAll({
-    attributes: { exclude: ['password'] },
+    attributes: { exclude: ["password"] },
     where: { id: req.params.id },
   })
     .then((user) => res.status(200).json(user))
@@ -24,7 +24,7 @@ exports.deleteUser = (req, res) => {
       db.sequelize.models.User.destroy({ where: { id: req.params.id } });
     })
     .then(() =>
-      res.status(200).json({ message: 'Cet utilisateur est supprimé!' })
+      res.status(200).json({ message: "Cet utilisateur est supprimé!" })
     )
     .catch((error) => {
       console.log(error);
@@ -35,9 +35,9 @@ exports.deleteUser = (req, res) => {
 // Comment récuperer les 4 derniers nouveaux utilisateurs :
 exports.getLastSignup = (req, res) => {
   db.sequelize.models.User.findAll({
-    attributes: { exclude: ['password'] },
+    attributes: { exclude: ["password"] },
     limit: 4,
-    order: [['createdAt', 'DESC']],
+    order: [["createdAt", "DESC"]],
   })
     .then((users) => {
       console.log(users);
@@ -76,7 +76,7 @@ exports.login = (req, res, next) => {
       if (!user[0]) {
         return res
           .status(401)
-          .json({ error: 'Requête invalide : Utilisateur inconnu!' });
+          .json({ error: "Requête invalide : Utilisateur inconnu!" });
       }
       bcrypt
         .compare(req.body.password, user[0].password)
@@ -84,18 +84,18 @@ exports.login = (req, res, next) => {
           if (!valid) {
             return res.status(401).json({
               message:
-                'Requête invalide : Mot de passe erroné!' +
-                console.log(req.body.password + '    ' + user.password),
+                "Requête invalide : Mot de passe erroné!" +
+                console.log(req.body.password + "    " + user.password),
             });
           }
           res.status(200).json({
             moderator: user[0].moderator,
             userId: user[0].id,
-            message: 'Utilisateur reconnu!',
+            message: "Utilisateur reconnu!",
             token: jwt.sign(
               { userId: user.id, moderator: user.moderator },
-              'RANDOM_TOKEN_SECRET',
-              { expiresIn: '24h' }
+              "RANDOM_TOKEN_SECRET",
+              { expiresIn: "24h" }
             ),
           });
         })

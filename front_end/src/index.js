@@ -10,7 +10,7 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import "./style/index.css";
 
-import { DataProvider } from "./datacontext";
+import { DataProvider } from "./DataContext";
 
 ReactDOM.render(
   <Router>

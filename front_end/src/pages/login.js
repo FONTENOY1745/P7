@@ -1,29 +1,29 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import Axios from 'axios';
-import '../style/form.css';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import Axios from "axios";
+import "../style/form.css";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const history = useHistory();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   function redirect() {
-    history.push('/');
+    history.push("/");
   }
 
   const login = () => {
-    Axios.post('http://localhost:3000/api/user/login', {
+    Axios.post("http://localhost:3000/api/user/login", {
       email: email,
       password: password,
     }).then((response) => {
-      localStorage.setItem('token', 'Bearer ' + response.data.token);
+      localStorage.setItem("token", "Bearer " + response.data.token);
       console.log(response.data.userId);
       console.log(response.data.moderator);
       console.log(response);
-      localStorage.setItem('id', response.data.userId);
-      localStorage.setItem('moderator', response.data.moderator);
+      localStorage.setItem("id", response.data.userId);
+      localStorage.setItem("moderator", response.data.moderator);
       redirect();
     });
   };
@@ -79,7 +79,7 @@ export default function Login() {
           </button>
         </div>
       </div>
-      <p>Vous n'avez pas encore de compte. </p>{' '}
+      <p>Vous n'avez pas encore de compte. </p>{" "}
       <Link className="signup-link" to="/signup">
         Créer un compte
       </Link>
