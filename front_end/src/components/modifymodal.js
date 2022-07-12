@@ -1,5 +1,5 @@
 import React from "react";
-import "../style/modal.css";
+import "../style/Modal.css";
 import { GrFormClose } from "react-icons/gr";
 
 export default function modifyModal({ openModify, children, onClose }) {
