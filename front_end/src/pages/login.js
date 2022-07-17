@@ -40,11 +40,11 @@ export default function Login() {
 
   return (
     <div className="form-container">
-      <h1 className="main-title">Sign in to Groupomania</h1>
+      <h1 className="main-title">Connectez vous à Groupomania</h1>
       <div className="form-container-box">
         <div className="inputs">
           <div className="input">
-            <label htmlFor="inputEmail">Email:</label>
+            <label htmlFor="inputEmail">E-mail:</label>
             <input
               placeholder="email"
               type="email"
@@ -57,7 +57,7 @@ export default function Login() {
           </div>
 
           <div className="input">
-            <label htmlFor="inputPassword">password:</label>
+            <label htmlFor="inputPassword">Mot de passe :</label>
             <input
               placeholder="password"
               type="password"
@@ -73,9 +73,9 @@ export default function Login() {
         <div className="button-login-container">
           <button
             className="submit-btn-login"
-            onClick={(() => login, () => emailValidation(email))}
+            onClick={() => emailValidation(email)}
           >
-            SUBMIT
+            CONNEXION
           </button>
         </div>
       </div>

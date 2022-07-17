@@ -39,17 +39,17 @@ export default function Profile() {
   if (isprofileDeleted) {
     return (
       <div className="main-container">
-        <div className="delete-profile-msg">Profile supprimé</div>
+        <div className="delete-profile-msg">Profil supprimé</div>
       </div>
     );
   }
 
   return (
     <div className="main-container">
-      <h1 className="hidden-h1">Profile</h1>
+      <h1 className="hidden-h1">Profil</h1>
       <div className="info-container">
         <div className="info">
-          <h2>Informations sur le profile</h2>
+          <h2>Informations sur le profil</h2>
           <div className="underline" />
           <table>
             <thead className="thead">
@@ -58,7 +58,7 @@ export default function Profile() {
                   champs
                 </th>
                 <th className="column date" colSpan="1">
-                  infos utilisateur
+                  Informations utilisateur
                 </th>
               </tr>
             </thead>
@@ -67,7 +67,7 @@ export default function Profile() {
               <td>
                 {" "}
                 <p className="profile-info-input">
-                  nom d&apos;utilisateur
+                  Nom d&apos;utilisateur :
                 </p>{" "}
               </td>
               <td>
@@ -79,7 +79,7 @@ export default function Profile() {
             <tr>
               <td>
                 {" "}
-                <p className="profile-info-input">email</p>{" "}
+                <p className="profile-info-input">E-mail :</p>{" "}
               </td>
               <td>
                 {" "}
@@ -90,7 +90,7 @@ export default function Profile() {
             <tr>
               <td>
                 {" "}
-                <p className="profile-info-input">créé le</p>{" "}
+                <p className="profile-info-input">Créé le :</p>{" "}
               </td>
               <td>
                 {" "}
@@ -102,7 +102,7 @@ export default function Profile() {
           {dataUser.moderator == true ? (
             <div className="card-status admin">ADMIN STATUS</div>
           ) : (
-            <div className="card-status user">USER STATUS</div>
+            <div className="card-status user">STATUT UTILISATEUR</div>
           )}
         </div>
       </div>

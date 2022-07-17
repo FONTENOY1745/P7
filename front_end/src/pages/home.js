@@ -27,7 +27,7 @@ export default function Home() {
 
   useEffect(() => {
     Axios.get(
-      "http://localhost:3000/api/post/lastactivitypost",
+      "http://localhost:3000/api/posts/lastactivitypost",
 
       {
         headers: {
@@ -58,7 +58,7 @@ export default function Home() {
         <h1>Bienvenue {dataUser.name} ! </h1>
         <div className="wrap-container">
           <div className="last-activities-container">
-            <h2>Dernière activités sur le forum multimédia</h2>
+            <h2>Dernières activités sur le forum multimédia</h2>
             <div className="underline" />
 
             <table className="table-last-activities">

@@ -10,11 +10,13 @@ export const DataProvider = ({ children }) => {
   const [dataUserId, setDataUserId] = useState("");
 
   useEffect(() => {
-    Axios.get(`http://localhost:3000/api/user/${userId}`).then((response) => {
-      console.log(response.data);
-      setDataUserId(response.data.id);
-      setDataUser(response.data);
-    });
+    Axios.get(`http://localhost:3000/api/user/single/${userId}`).then(
+      (response) => {
+        //console.log(response.data);
+        setDataUserId(response.data.id);
+        setDataUser(response.data);
+      }
+    );
   }, []);
 
   return (

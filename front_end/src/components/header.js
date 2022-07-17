@@ -34,26 +34,26 @@ function Header() {
       </header>
       <nav className={show ? "square active" : "square"}>
         <Link className="header-link" onClick={displayLinks} to="/">
-          Accueil
+          ACCUEIL
         </Link>
         <Link className="header-link" onClick={displayLinks} to="/profile">
           {" "}
-          Profile
+          PROFIL
         </Link>
         <Link className="header-link" onClick={displayLinks} to="/forum">
           {" "}
-          forum
+          FORUM
         </Link>
         <Link className="header-link" onClick={displayLinks} to="/login">
           {" "}
-          login
+          CONNEXION
         </Link>
         <Link className="header-link" onClick={displayLinks} to="/signup">
           {" "}
-          signup
+          S'ENREGISTRER
         </Link>
         <button className="logout-btn" onClick={logout}>
-          Logout
+          DECONNEXION
         </button>
       </nav>
     </div>

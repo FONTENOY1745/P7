@@ -12,7 +12,7 @@ exports.getAllPosts = (req, res) => {
 
 // Comment récupérer les 4 derniers posts :
 exports.getLastActivityPost = (req, res) => {
-  Post.findAll({
+  Posts.findAll({
     limit: 4,
   })
     .then((posts) => res.status(201).json(posts))

@@ -124,7 +124,7 @@ export default function Forum() {
 
       <button className="btn upload" onClick={() => setIsOpenModal(true)}>
         <FaPlus />
-        Upload
+        Chargement
       </button>
       <Modal open={isOpenModal} onClose={() => setIsOpenModal(false)}>
         <input
@@ -195,7 +195,7 @@ export default function Forum() {
           }}
         ></textarea>
         <button className="submit-btn" onClick={modifyPost}>
-          MODIFY
+          MODIFIER
         </button>
       </ModifyModal>
 
@@ -207,11 +207,11 @@ export default function Forum() {
             <div className="card-title-box">
               <h2>{post.title} </h2>
               <p className="created-by-tag-laptop">
-                post créé par {post.userName}
+                post créé par : {post.userName}
               </p>
             </div>
             <p className="created-by-tag-smartphone">
-              post créé par {post.userName}
+              Post créé par : {post.userName}
             </p>
             <div className="card-body">
               <img className="post-img" src={`${post.imageUrl}`} alt="" />
@@ -225,7 +225,7 @@ export default function Forum() {
                         deletePost(post.id, post.userId);
                       }}
                     >
-                      DELETE
+                      ANNULER
                     </button>
                     <button
                       className="modify-btn"
@@ -234,7 +234,7 @@ export default function Forum() {
                         getPostId(postId);
                       }}
                     >
-                      MODIFY
+                      MODIFIER
                     </button>
                   </div>
                 ) : null}

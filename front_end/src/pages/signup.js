@@ -42,12 +42,12 @@ export default function Signup() {
 
   return (
     <div className="form-container">
-      <h1 className="main-title">Sign up to Groupomania</h1>
+      <h1 className="main-title">Connectez vous à Groupomania</h1>
 
       <div className="form-container-box">
         <div className="inputs">
           <div className="input">
-            <label htmlFor="inputName">Name:</label>
+            <label htmlFor="inputName">Nom :</label>
             <input
               placeholder="name"
               className="form-control"
@@ -60,7 +60,7 @@ export default function Signup() {
           </div>
 
           <div className="input">
-            <label htmlFor="inputEmail">Email:</label>
+            <label htmlFor="inputEmail">E-mail :</label>
             <input
               placeholder="email"
               type="email"
@@ -73,7 +73,7 @@ export default function Signup() {
           </div>
 
           <div className="input">
-            <label htmlFor="inputPassword">password:</label>
+            <label htmlFor="inputPassword">Mot de passe :</label>
             <input
               placeholder="password"
               className="form-control"
@@ -92,9 +92,9 @@ export default function Signup() {
         <div className="button-login-container">
           <button
             className="submit-btn-login"
-            onClick={(() => signup, () => emailValidation(email, password))}
+            onClick={() => emailValidation(email, password)}
           >
-            SUBMIT
+            CONNEXION
           </button>
         </div>
       </div>
