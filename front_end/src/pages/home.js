@@ -9,21 +9,21 @@ export default function Home() {
 
   // On redirige l'utilisateur s'il ne s'est pas loggé
 
-  // function redirectLogin() {
-  //   history.push("/login");
-  // }
+  function redirectLogin() {
+    history.push("/login");
+  }
 
-  // useEffect(() => {
-  //   if (!LStoken) {
-  //     redirectLogin();
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (!LStoken) {
+      redirectLogin();
+    }
+  }, []);
 
   const { dataUser, LStoken } = useContext(DataContext);
   const [latestPosts, setLatestPosts] = useState([]);
   const [hour, setHour] = useState([]);
   const [day, setDay] = useState([]);
-  //console.log(dataUser);
+  console.log(dataUser);
 
   useEffect(() => {
     Axios.get(

@@ -1,6 +1,6 @@
 import React from "react";
 import "../style/footer.css";
-/*import Logo from "../style/logos/icon-left-font-monochrome-white.png";*/
+//import Logo from "../style/icon.png";
 
 export default function Footer() {
   return (

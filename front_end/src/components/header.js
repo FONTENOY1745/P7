@@ -12,8 +12,8 @@ function Header() {
   }
 
   function logout() {
-    // localStorage.setItem('token', '')
-    // localStorage.setItem('id', '')
+    //localStorage.setItem("token", "");
+    //localStorage.setItem("id", "");
     localStorage.clear();
     redirect();
   }

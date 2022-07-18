@@ -1,14 +1,15 @@
 import React, { useContext, useState, useEffect } from "react";
 import DataContext from "../DataContext";
 import "../style/profile.css";
-import DeleteAccModal from "../components/DeleteAccModal";
+import DeleteAccountModal from "../components/DeleteAccountModal";
 import Axios from "axios";
 import { useHistory } from "react-router-dom";
 
 export default function Profile() {
   const history = useHistory();
 
-  const [isOpenDeleteAccModal, setIsOpenDeleteAccModal] = useState(false);
+  const [isOpenDeleteAccountModal, setIsOpenDeleteAccountModal] =
+    useState(false);
   const [isprofileDeleted, setisprofileDeleted] = useState(false);
 
   const { dataUser, LStoken } = useContext(DataContext);
@@ -108,13 +109,13 @@ export default function Profile() {
       </div>
       <button
         className="delete-account-button"
-        onClick={() => setIsOpenDeleteAccModal(true)}
+        onClick={() => setIsOpenDeleteAccountModal(true)}
       >
         Supprimer mon compte
       </button>
-      <DeleteAccModal
-        open={isOpenDeleteAccModal}
-        onClose={() => setIsOpenDeleteAccModal(false)}
+      <DeleteAccountModal
+        open={isOpenDeleteAccountModal}
+        onClose={() => setIsOpenDeleteAccountModal(false)}
       >
         Voulez-vous vraiment supprimer votre compte ?
         <div className="answer-btn-box">
@@ -125,7 +126,7 @@ export default function Profile() {
             Oui
           </button>
         </div>
-      </DeleteAccModal>
+      </DeleteAccountModal>
     </div>
   );
 }

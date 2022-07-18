@@ -12,18 +12,15 @@ export default function CommentSection({ postId }) {
   const [comment, setComment] = useState("");
   const userId = dataUser.id;
 
-  const fetchComments = useCallback(
-    () => {
-      Axios.get(`http://localhost:3000/api/comment/ofpost/${postId}`, {
-        headers: {
-          Authorization: LStoken,
-        },
-      }).then((response) => {
-        setComments(response.data);
-      });
-    }
-    // [LStoken]
-  );
+  const fetchComments = useCallback(() => {
+    Axios.get(`http://localhost:3000/api/comment/ofpost/${postId}`, {
+      headers: {
+        Authorization: LStoken,
+      },
+    }).then((response) => {
+      setComments(response.data);
+    });
+  }, [LStoken]);
 
   const submitComment = useCallback(() => {
     console.log(LStoken);

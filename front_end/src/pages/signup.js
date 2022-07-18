@@ -32,11 +32,10 @@ export default function Signup() {
     if (!email.match(emailReg)) {
       alert("Erreur : L'adresse e-mail n'est pas valide!");
       return;
-    }
-    /*else if (!password.match(passwordReg)) {
+    } else if (!password.match(passwordReg)) {
       alert("Erreur : Le mot de passe n'est pas valide!");
       return;
-    }*/
+    }
     signup();
   }
 
