@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
+import Axios from "axios";
 import DataContext from "../DataContext";
 import "../style/profile.css";
 import DeleteAccountModal from "../components/DeleteAccountModal";
-import Axios from "axios";
 import { useHistory } from "react-router-dom";
 
 export default function Profile() {

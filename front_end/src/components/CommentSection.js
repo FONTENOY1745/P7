@@ -70,7 +70,7 @@ export default function CommentSection({ postId }) {
         className="add-comment-btn"
         onClick={() => setIsOpenCommentModal(true)}
       >
-        Add a comment
+        COMMENTER
       </button>
 
       <AddCommentModal
@@ -87,7 +87,7 @@ export default function CommentSection({ postId }) {
           }}
         ></textarea>
         <button className="submit-btn" onClick={submitComment}>
-          SUBMIT
+          PROPOSER
         </button>
       </AddCommentModal>
 
@@ -97,7 +97,7 @@ export default function CommentSection({ postId }) {
             <div className="comment-single">
               <div className="comment-inner-container">
                 <p className="comment-of">
-                  - commentaire créé par {comment.userName} -
+                  - Commentaire créé par {comment.userName} -
                 </p>
                 <p className="comment-text">{comment.content}</p>
               </div>

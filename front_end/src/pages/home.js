@@ -23,7 +23,7 @@ export default function Home() {
   const [latestPosts, setLatestPosts] = useState([]);
   const [hour, setHour] = useState([]);
   const [day, setDay] = useState([]);
-  console.log(dataUser);
+  //console.log(dataUser);
 
   useEffect(() => {
     Axios.get(
@@ -83,6 +83,16 @@ export default function Home() {
                     </tr>
                   );
                 })}
+                <a id="article-like-href" href="{{ path('like_article', {id: article.id}) }}" data-isLiked="{{ isLiked }}" data-csrf-token="{{ csrf_token('article' ~ article.id) }}">
+                                <span id="article-like-count" data-like-count="{{ article.likes.count }}">{{ article.likes.count }}</span>
+                                {% if isLiked %}
+                                    <i id="article-like-icon" class="btn-like fa fa-thumbs-up"></i>
+                                    <span id="article-like-text">j'aime pas</span>
+                                {% else %}
+                                    <i id="article-like-icon" class="btn-like far fa-thumbs-up"></i>
+                                    <span id="article-like-text">j'aime</span>
+                                {% endif %}
+                            </a>
               </tbody>
             </table>
           </div>

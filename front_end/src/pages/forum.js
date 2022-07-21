@@ -240,6 +240,59 @@ export default function Forum() {
                 ) : null}
               </div>
             </div>
+            
+            $( document ).ready(function() {
+ 
+            href_like = document.getElementById('article-like-href')
+            icon_like = document.getElementById('article-like-icon')
+            text_like = document.getElementById('article-like-text')
+            like_count = document.getElementById('article-like-count')
+
+            href_like.addEventListener('click', setLike)
+
+            function setLike(event)
+            {
+            event.preventDefault()
+
+            const Url = $(this).attr('href')
+      
+            if (icon_like.classList.contains('far')) {
+
+            icon_like.classList.replace('far', 'fa')
+            text_like.innerHTML = "j'aime pas"
+
+            currentCountLike = like_count.dataset.likeCount + 1
+          
+            like_count.setAttribute('data-like-count', currentCountLike)
+            like_count.innerHTML = currentCountLike
+
+            } else {
+
+            icon_like.classList.replace('fa', 'far')
+            text_like.innerHTML = "j'aime"
+
+            if (like_count.dataset.likeCount <= 0) {
+
+             like_count.setAttribute('data-like-count', 0)
+             like_count.innerHTML = 0
+            }
+
+            currentCountLike = like_count.dataset.likeCount - 1
+
+            like_count.setAttribute('data-like-count', currentCountLike)
+            like_count.innerHTML = currentCountLike
+          }
+
+          let req = new XMLHttpRequest()
+
+          req.open("POST", Url)
+          req.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
+          req.send()
+
+        }
+
+      })
+
 
             <p>{post.content} </p>
 
