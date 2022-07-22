@@ -47,7 +47,7 @@ exports.createPost = (req, res, next) => {
 exports.modifyPost = (req, res) => {
   console.log(req.body);
   const postObject = req.body;
-  Post.findOne({
+  Posts.findOne({
     where: { id: req.params.id },
   })
     .then((post) => {
