@@ -79,7 +79,7 @@ export default function CommentSection({ postId }) {
       >
         <textarea
           className="input-content"
-          placeholder="Add a comment"
+          placeholder="Ajouter un commentaire"
           name="content"
           type="text"
           onChange={(e) => {

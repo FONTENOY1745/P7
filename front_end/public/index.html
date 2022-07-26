@@ -1,34 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
-	<head>
-	    <meta charset="utf-8" />
-	    <link rel="icon" href="%PUBLIC_URL%/icon.png" />
-	    <meta name="viewport" content="width=device-width, initial-scale=1" />
-	    <meta name="theme-color" content="#000000" />
-	    <meta
-	      name="description"
-          content="Web site created using create-react-app"
-	    />
-	    <link rel="apple-touch-icon" href="../images/icon.png" />
-	  
-	    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-	   
-	    <title>React App</title>
-	</head>
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" href="../images/icon.png" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="theme-color" content="#000000" />
+	<meta name="description" content="Web site created using create-react-app" />
+	<link rel="apple-touch-icon" href="../images/icon.png" />
+
+	<link rel="manifest" href="../images/manifest.json" />
+
+	<title>React App</title>
+</head>
+
+<body>
+	<noscript>Il est nécessaire d'utiliser Javascript pour cette application</noscript>
+	<div id="root"></div>
+	<div id="portal"></div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.2.0/umd/react.production.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.2.0/umd/react-dom.production.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+	<script src="https://kit.fontawesome.com/00c761c639.js" crossorigin="anonymous"></script>
 
 	<body>
-	    <noscript>Il est nécessaire d'utiliser Javascript pour cette application</noscript>
-	    <div id="root"></div>
-	    <div id="portal"></div>
-		<div id="like_button_container"></div>
-	   
+		<div id="root"></div>
+		<script type="text/jsx">
+
+		class HeartButton extends React.Component {
+  		state = {
+    	likes: 0
+  		};
+
+  		addLike = () => {
+    	let newCount = this.state.likes + 1;
+     	this.setState({
+     	likes: newCount});
+  		};
+
+  		render() {
+    	const likes = this.state.likes;
+    	if (likes === 0) {
+      	return (
+        <div>
+          <button
+            className="button"
+            onClick={this.addLike}
+          >
+            <i className="far fa-heart fa-lg" style={{ color: "#33c3f0" }}></i>
+          </button>
+        </div>
+      );
+    }
+    if (likes === 1) {
+      return (
+        <div>
+          <button className="button" onClick={this.addLike}>
+            <i className="fas fa-heart fa-lg" style={{ color: "red" }}></i>
+          </button>
+        </div>
+      );
+    }
+    if (likes > 1) {
+      return (
+        <div>
+          <button className="button" onClick={this.addLike}>
+            <i className="fas fa-heart fa-lg" style={{ color: "red" }}></i>{" "}
+            {likes}
+          </button>
+        </div>
+      );
+    }
+  }
+}
+    ReactDOM.render(
+        <HeartButton />, document.getElementById('root') );
+    </script>
+		</script>
+
 		<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
 		<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
 		<!-- Charge notre composant React (cf. doc React step 2) -->
 		<script src="like_button.js"></script>
 
-		<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-	  
-	</body>
 </html>

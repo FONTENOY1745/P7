@@ -5,7 +5,7 @@ import "../style/footer.css";
 export default function Footer() {
   return (
     <footer className="footer-container">
-      <img className="logo-footer" src={""} alt="logo-groupomania" />
+      <img className="logo-footer" src={"../images/icon.png"} alt="logo-groupomania" />
     </footer>
   );
 }

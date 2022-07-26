@@ -127,7 +127,7 @@ export default function Forum() {
 
       <button className="btn upload" onClick={() => setIsOpenModal(true)}>
         <FaPlus />
-        Chargement
+        CHARGER
       </button>
       <Modal open={isOpenModal} onClose={() => setIsOpenModal(false)}>
         <input
@@ -143,7 +143,7 @@ export default function Forum() {
         ></input>
         <input
           className="input-title"
-          placeholder="title"
+          placeholder="Titre"
           name="title"
           type="text"
           onChange={(e) => {
@@ -152,7 +152,7 @@ export default function Forum() {
         ></input>
         <textarea
           className="input-content"
-          placeholder="post"
+          placeholder="Commentaire"
           name="content"
           type="text"
           onChange={(e) => {
@@ -160,7 +160,7 @@ export default function Forum() {
           }}
         ></textarea>
         <button className="submit-btn" onClick={submitPost}>
-          SUBMIT
+          ENVOYER
         </button>
       </Modal>
 
@@ -181,7 +181,7 @@ export default function Forum() {
         ></input>
         <input
           className="input-title"
-          placeholder="title"
+          placeholder="Titre"
           name="title"
           type="text"
           onChange={(e) => {
@@ -190,7 +190,7 @@ export default function Forum() {
         ></input>
         <textarea
           className="input-content"
-          placeholder="post"
+          placeholder="Commentaire"
           name="content"
           type="text"
           onChange={(e) => {
@@ -210,7 +210,7 @@ export default function Forum() {
             <div className="card-title-box">
               <h2>{post.title} </h2>
               <p className="created-by-tag-laptop">
-                post créé par : {post.userName}
+                Post créé par : {post.userName}
               </p>
             </div>
             <p className="created-by-tag-smartphone">
