@@ -71,6 +71,42 @@ export default function Signup() {
             ></input>
           </div>
 
+
+/* on vérifie la qualité d'administrateur du réseau pour la suppression
+
+          let deleteBtn;
+
+          if (auth.userId === props.user_id || auth.account === "admin") {
+            deleteBtn = (
+              <button className={styles.delete_btn} onClick={props.onDelete}>
+                <img className={styles.delete_icon} src={DeleteX} alt="delete icon" />
+              </button>
+            );
+};
+          else {
+            deleteBtn = "";
+          }
+
+          return (
+          <header className={styles.block}>
+            <Link to={`/profile/${props.user_id}`}>
+              <img
+                className={styles.photo}
+                src={props.photo_url || GenProfile}
+                alt={`${props.firstName} ${props.lastName}`}
+              />
+              {props.firstName} {props.lastName}
+            </Link>
+            <p className={styles.text}>
+              {category}
+              <span className={styles.text_division}>•</span>
+              <span>{newPostDate}</span>
+            </p>
+            {deleteBtn}
+          </header>
+          );
+
+
           <div className="input">
             <label htmlFor="inputPassword">Mot de passe :</label>
             <input
