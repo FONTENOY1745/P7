@@ -43,7 +43,7 @@ const Signup = () => {
           if (res.status === 201) {
             document.getElementById('message').classList.add('confirmation')
             document.getElementById('message').innerText =
-              'Votre compte utilisateur a été créé !'
+              'Votre compte utilisateur est créé!'
             setLastName('')
             setFirstName('')
             setEmail('')

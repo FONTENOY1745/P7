@@ -21,7 +21,7 @@ const Profile = () => {
   const tokenUser = JSON.parse(rawPayload)
 
   const getProfile = async () => {
-    const response = await fetch(`http://localhost:5050/users/${id}`, {
+    const response = await fetch(`http://localhost:3000/users/${id}`, {
       headers: { Authorization: 'Bearer ' + token },
     })
     const profile = await response.json()
@@ -49,7 +49,7 @@ const Profile = () => {
             ) {
               axios({
                 method: 'DELETE',
-                url: `http://localhost:5050/users/${id}`,
+                url: `http://localhost:3000/users/${id}`,
                 headers: { Authorization: 'Bearer ' + token },
               }).then(() => history.push('/login'))
             } else {
@@ -78,7 +78,7 @@ const Profile = () => {
               formData.append('image', newFile)
               axios({
                 method: 'PUT',
-                url: `http://localhost:5050/users/${id}`,
+                url: `http://localhost:3000/users/${id}`,
                 headers: {
                   'Content-Type': 'multipart/form-data',
                   Authorization: 'Bearer ' + token,
