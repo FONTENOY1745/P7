@@ -1,28 +1,18 @@
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken')
+require('dotenv').config({ path: '../config/.env' })
 
-// Comment authentifier (Utilisateur et Administrateur) en comparaison avec le token :
 module.exports = (req, res, next) => {
   try {
-    const token = req.headers.authorization.split(" ")[1];
-    const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
-    const userId = decodedToken.userId;
-    const moderator = decodedToken.moderator;
-    console.log(moderator);
-    if (
-      (req.body.userId && req.body.userId !== userId) ||
-      req.body.moderator == false
-    ) {
-      throw "Nom d'utilisateur invalide!";
-    } else if (req.body.isAdmin && req.body.isAdmin !== isAdmin) {
-      console.log(isAdmin);
-      return res.status(401).json({ error: "Administrateur invalide!" });
+    const token = req.headers.authorization.split(' ')[1]
+    const decodedToken = jwt.verify(token, process.env.SECRET_KEY)
+    const userId = decodedToken.userId
+    // Si le userId à la requête est différent de celui du token alors (if/then) identifiant utilisateur invalide. Si non alors on appelle la commande next()
+    if (req.body.userId && req.body.userId !== userId) {
+      throw 'Identifiant utilisateur invalide'
     } else {
-      console.log(decodedToken);
-      next();
+      next()
     }
-  } catch {
-    res.status(401).json({
-      error: new Error("Requête invalide!"),
-    });
+  } catch (error) {
+    res.status(401).json({ message: 'Requête non authentifiée' + error })
   }
-};
+}

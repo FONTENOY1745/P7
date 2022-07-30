@@ -1,48 +1,44 @@
-"use strict";
+const dbConfig = require('../config/db.config.js')
 
-// En utilisant le mode strict (cf. W3 schools), on ne peut pas utiliser de variables non déclarées
+const Sequelize = require('sequelize')
+const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
+    host: dbConfig.HOST,
+    dialect: dbConfig.dialect,
+    operatorsAliases: false,
 
-const fs = require("fs");
-const path = require("path");
-const Sequelize = require("sequelize");
-const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || "development";
-const config = require(__dirname + "/../config/config.json")[env];
-const db = {};
+    pool: {
+        max: dbConfig.pool.max,
+        min: dbConfig.pool.min,
+        acquire: dbConfig.pool.acquire,
+        idle: dbConfig.pool.idle,
+    },
+})
 
-let sequelize;
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  sequelize = new Sequelize(
-    config.database,
-    config.username,
-    config.password,
-    config
-  );
-}
+const db = {}
 
-fs.readdirSync(__dirname)
-  .filter((file) => {
-    return (
-      file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js"
-    );
-  })
-  .forEach((file) => {
-    const model = require(path.join(__dirname, file))(
-      sequelize,
-      Sequelize.DataTypes
-    );
-    db[model.name] = model;
-  });
+db.Sequelize = Sequelize
+db.sequelize = sequelize
 
-Object.keys(db).forEach((modelName) => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
-  }
-});
+// Liste des tables
+db.users = require('./userModel.js')(sequelize, Sequelize)
+db.posts = require('./postModel.js')(sequelize, Sequelize)
+db.comments = require('./commentModel.js')(sequelize, Sequelize)
+db.likes = require('./likeModel.js')(sequelize, Sequelize)
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
+// On associe les tables Users et Posts
+db.users.hasMany(db.posts, { onDelete: 'cascade' })
+db.posts.belongsTo(db.users)
 
-module.exports = db;
+// On associe les tables Comments et Users et Comments et Posts
+db.users.hasMany(db.comments, { onDelete: 'cascade' })
+db.comments.belongsTo(db.users)
+db.posts.hasMany(db.comments, { onDelete: 'cascade' })
+db.comments.belongsTo(db.posts)
+
+// On associe les tables Likes et Users et Likes et Posts
+db.users.hasMany(db.likes, { onDelete: 'cascade' })
+db.likes.belongsTo(db.users)
+db.posts.hasMany(db.likes, { onDelete: 'cascade' })
+db.likes.belongsTo(db.posts)
+
+module.exports = db
