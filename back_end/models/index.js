@@ -29,13 +29,13 @@ db.likes = require('./likeModel.js')(sequelize, Sequelize)
 db.users.hasMany(db.posts, { onDelete: 'cascade' })
 db.posts.belongsTo(db.users)
 
-// On associe les tables Comments et Users et Comments et Posts
+// On associe les tables Comments et Users + Comments et Posts
 db.users.hasMany(db.comments, { onDelete: 'cascade' })
 db.comments.belongsTo(db.users)
 db.posts.hasMany(db.comments, { onDelete: 'cascade' })
 db.comments.belongsTo(db.posts)
 
-// On associe les tables Likes et Users et Likes et Posts
+// On associe les tables Likes et Users + Likes et Posts
 db.users.hasMany(db.likes, { onDelete: 'cascade' })
 db.likes.belongsTo(db.users)
 db.posts.hasMany(db.likes, { onDelete: 'cascade' })

@@ -110,7 +110,7 @@ const Signup = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
               <span className='advice'>
-                Min 8 caractères dont au moins un chiffre, une majuscule, une
+                Minimum 8 caractères dont au moins un chiffre, une majuscule, une
                 minuscule
               </span>
             </div>
