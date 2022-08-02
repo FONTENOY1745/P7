@@ -23,7 +23,7 @@ db.sequelize = sequelize
 db.users = require('./userModel.js')(sequelize, Sequelize)
 db.posts = require('./postModel.js')(sequelize, Sequelize)
 db.comments = require('./commentModel.js')(sequelize, Sequelize)
-db.likes = require('./likeModel.js')(sequelize, Sequelize)
+db.likes = require('./likeModels.js')(sequelize, Sequelize)
 
 // On associe les tables Users et Posts
 db.users.hasMany(db.posts, { onDelete: 'cascade' })

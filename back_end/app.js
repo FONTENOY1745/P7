@@ -15,6 +15,9 @@ const commentRoutes = require('./routes/commentRoutes')
 // Express
 const app = express()
 
+// On gère les requêtes vers la route /images
+app.use('/images', express.static(path.join(__dirname, 'images')))
+
 // On sécurise Express avec différentes entêtes HTTP
 app.use(helmet())
 
@@ -51,8 +54,7 @@ app.use(cors())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-// On gère les requêtes vers la route /images
-app.use('/images', express.static(path.join(__dirname, 'images')))
+
 
 // Routes
 app.use('/users', userRoutes)
