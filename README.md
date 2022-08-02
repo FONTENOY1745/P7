@@ -1,6 +1,6 @@
 # INSTALLATION DU PROJET 7 groupomania - OPEN CLASSROOMS - FORMATION DEVELOPPEUR WEB
 
-1. Utiliser le repository Github faiant partie des livrables. Il contient l'nsemble du projet avec le Back_end and le Front_end, comme demandé dans les spécifications de Groupomania,
+1. Utiliser le repository Github faisant partie des livrables. Il contient l'ensemble du projet avec le Back_end et le Front_end, comme demandé dans les spécifications de Groupomania,
 
 2. Mode d'emploi pour l'installation da ce projet Groupomania :
 
