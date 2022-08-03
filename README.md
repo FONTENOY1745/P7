@@ -4,7 +4,7 @@
 
 2. Mode d'emploi pour l'installation da ce projet Groupomania :
 
-2.1. Chargement de la partie front_end : Depuis l'invite Bash dans le terminal (ou autre invite à votre choix), saisir la commande cd front_end, et une fois sur le sous-répertoire front_end, alors valider, puis saisir la commande npm run start et valider,
+2.1. Chargement de la partie front_end : Depuis l'invite Bash dans le terminal (ou autre invite à votre choix), saisir la commande cd front_end et une fois sur le sous-répertoire front_end alors valider, puis saisir la commande npm run start et valider,
 
 2.2. Chargement de la partie back_end : Depuis une autre invite Bash dans le terminal (ou autre invite à votre choix),saisir la commande cd back_end et une fois sur le sous-répertoire back_end, alors valider, puis saisir la commande nodemon server, puis valider.
 
