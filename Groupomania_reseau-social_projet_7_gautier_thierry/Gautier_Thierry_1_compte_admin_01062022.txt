@@ -1,5 +1,0 @@
-Identifiants administrateur :
-
-email : admin@groupomania.fr
-
-mot de passe : Admin1234
